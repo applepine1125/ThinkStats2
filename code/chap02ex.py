@@ -36,6 +36,28 @@ def AllModes(hist):
     return arr
 
 
+def WeightDiff(firsts, others):
+    mean1 = firsts.totalwgt_lb.mean()
+    mean2 = others.totalwgt_lb.mean()
+    
+    var1 = firsts.totalwgt_lb.var()
+    var2 = others.totalwgt_lb.var()
+
+    print('Mean')
+    print('First babies ', mean1)
+    print('Others ', mean2)
+    
+    print('Variance')
+    print('First babies ', var1)
+    print('Others ', var2)
+
+    print('Difference mean that First babies and others ', mean1 - mean2)
+
+    d = thinkstats2.CohenEffectSize(firsts.totalwgt_lb, others.totalwgt_lb)
+    print('Cohen d ', d)
+
+
+
 def main(script):
     """Tests the functions in this module.
 
@@ -43,6 +65,8 @@ def main(script):
     """
     live, firsts, others = first.MakeFrames()
     hist = thinkstats2.Hist(live.prglngth)
+
+    WeightDiff(firsts, others)
 
     # test Mode    
     mode = Mode(hist)
