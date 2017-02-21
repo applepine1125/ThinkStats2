@@ -21,7 +21,8 @@ def Mode(hist):
 
     returns: value from Hist
     """
-    return 0
+    p, x = max(hist.Items(), key=(lambda x:x[1]))
+    return p
 
 
 def AllModes(hist):
@@ -31,7 +32,8 @@ def AllModes(hist):
 
     returns: iterator of value-freq pairs
     """
-    return []
+    arr = sorted(hist.Items(), key=(lambda x:x[1]), reverse=True)
+    return arr
 
 
 def main(script):
